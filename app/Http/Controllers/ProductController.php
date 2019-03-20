@@ -17,6 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $products = DB::table('relations')->where('product_id', '=', 22)->get();
         $data['products'] = Product::all();
         return view('admin.products.list', $data);
     }
