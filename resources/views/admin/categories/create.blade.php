@@ -12,10 +12,7 @@
                                 <label class="col-form-label" for="name">Category name:</label>
                                 <input type="text" name="name" class="form-control">
                             </div>
-                            <div class="form-row">
-                                <label class="col-form-label" for="shop_id">Shop_id:</label>
-                                <input type="text" name="shop_id" class="form-control" value="{{$_GET['shop_id']}}">
-                            </div>
+                            
                             <div class="form-row">
                                 <label class="col-form-label" for="slug">Category slug:</label>
                                 <input type="text" name="slug" class="form-control">

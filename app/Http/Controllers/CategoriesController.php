@@ -15,9 +15,6 @@ class CategoriesController extends Controller
     public function index()
     {
         $data['categories'] = Category::all();
-
-
-
         return view('admin.categories.list', $data);
     }
 
@@ -56,16 +53,8 @@ class CategoriesController extends Controller
             $image = $imagePath.$imageName;
             $category->img = $image;
         }
-
-
-
-   
-
-        
         $category->name = $request->name;
         $category->slug = $request->slug;
-    
-        $category->shop_id = $request->shop_id;
         $category->description = $request->description;
         $category->parent_id = $request->parent_id;
 
@@ -109,14 +98,6 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*$data['categories'] = Category::find($id);
-
-        $category = new Category();
-        $category->name = $request->get('name');
-
-        $category->name = 'New Flight Name';
-
-        $category->save();*/
         $this->validate($request, [
             'name' => 'required',
             'slug' => 'required',
@@ -147,13 +128,5 @@ class CategoriesController extends Controller
         $category = Category::find($id);
         $category->delete();
         return redirect()->route('categories.index');
-        //$category = Category::where('id',$id)->delete();
-
-       /*DB::delete('delete from categories where id = ?',[$id]);
-        echo "Record deleted successfully.<br/>";*/
-        //return redirect()->route('categories.index');
-        //$category = new Category();
-        
-        /*$data['categories'] ->delete();*/
     }
 }

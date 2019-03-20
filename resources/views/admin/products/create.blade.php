@@ -6,7 +6,7 @@
         <div class="col-md-12 col-md-offset-2">
             <form action="{{route('products.store')}}" method="POST">
                         {{ csrf_field() }}
-                        <input type="hidden" name="categories_id" value="{{$_GET['id']}}">
+                        
                         <div class="col-md-6">
                             <div class="form-row">
                                 <label class="col-form-label" for="name">Product name:</label>
@@ -29,13 +29,11 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="select"> Category parrent: </label>
-                                <select multiple class="form-control" id="select" name="parent_id">
-                                    
-                                    @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                    @endforeach
-                                </select>
+                                <label for="select"> Category parrent: </label></br>
+                                @foreach($categories as $category)
+                                    <input type="checkbox" name="select[]" value="{{$category->id}}">{{$category->name}}<br>
+                                @endforeach
+                                
                             </div>
                             
                             <button class="btn btn-success">Create</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
 use App\User;
+use App\Relation;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,22 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //$data['products'] = Product::all();//paimti visus irasus
-        //$data['product'] = Product::find($id);
-
-        /*$data['products'] = Product::where('id',1)->orderBy('name', 'DESC')->get();//paima visus irasus
-        /*$data['product'] = Product::where('qty',0)->first();*///paima tik pirma irasa
-        /*$data['product'] = User::where('role_id',1)->value('email');*///gaunam visus emailus
-
-
-
-        //return view('admin.products.list', $data);*/
         $data['products'] = Product::all();
-        //$data['categories'] = Category::all();
-
-
-
-       
         return view('admin.products.list', $data);
     }
 
@@ -43,7 +29,6 @@ class ProductController extends Controller
     public function create()
     {
         $data['categories'] = Category::all();
-
         return view('admin.products.create', $data);
     }
 
@@ -56,14 +41,19 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product();
-        /*$category = new Category();*/
         $product->name = $request->name;
         $product->price = $request->price;
         $product->slug = $request->slug;
         $product->description = $request->description;
-        /*$category->parent_id = $request->parent_id;*/
-
         $product->save();
+
+        $categoriesIds = $request->select;
+        foreach($categoriesIds as $categoryId){
+            $relation = new Relation();
+            $relation->product_id = $product->id;
+            $relation->category_id = $categoryId;
+            $relation->save();
+        }
         return redirect(route('products.index'));
     }
 

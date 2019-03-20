@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('parent_id')->default(0);
-            $table->integer('shop_id');
+            $table->integer('shop_id')->default(0);
             $table->integer('active')->default(0);
             $table->string('description');
             $table->integer('type_id')->default(0);
