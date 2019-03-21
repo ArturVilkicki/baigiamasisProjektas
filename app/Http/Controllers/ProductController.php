@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = DB::table('relations')->where('product_id', '=', 22)->get();
+        
         $data['products'] = Product::all();
         return view('admin.products.list', $data);
     }
@@ -99,7 +99,7 @@ class ProductController extends Controller
         ]);
         
         $product = Product::find($id);
-        $product = new Product();
+        
         $product->name = $request->get('name');
         $product->slug = $request->get('slug');
         $product->price = $request->get('price');

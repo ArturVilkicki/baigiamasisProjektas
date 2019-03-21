@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-12 col-md-offset-2">
         	
+        	
             
             {{$product->name}} {{$product->slug}} {{$product->description}}
             

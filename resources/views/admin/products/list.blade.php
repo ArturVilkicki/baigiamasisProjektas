@@ -3,8 +3,51 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 col-md-offset-2">
-            @foreach($products as $product)
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Slug</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Create</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($products as $product)
+                <tr>
+                    <td>
+                        {{$product->name}}
+                    </td>
+                    <td>
+                        {{$product->price}}
+                    </td>
+                    <td>
+                        {{$product->slug}}
+                    </td>
+                    <td>
+                        {{$product->description}}
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href='{{ route('products.create') }}'>Sukurti</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href='{{ route('products.edit', $product->id) }}'>Edit</a>
+                    </td>
+                    <td>
+                        <form method="POST" class="delete_form" action="{{route('products.destroy', $product->id)}}">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger">DELETE</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+                </tbody>
+           <!--  @foreach($products as $product)
                 
                 {{$product->name}} {{$product->price}} {{$product->description}}<br>
                 <a class="btn btn-danger" href='{{ route('products.create') }}'>Sukurti</a> 
@@ -14,7 +57,7 @@
                 	<input type="hidden" name="_method" value="DELETE">
                 	<button type="submit" class="btn btn-danger">DELETE</button>
                 </form>
-            @endforeach
+            @endforeach -->
         </div>
     </div>
 </div>
