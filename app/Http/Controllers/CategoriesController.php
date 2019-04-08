@@ -106,7 +106,6 @@ class CategoriesController extends Controller
         ]);
         
         $category = Category::find($id);
-        $category = new Category();
         $category->name = $request->get('name');
         $category->slug = $request->get('slug');
         $category->description = $request->get('description');

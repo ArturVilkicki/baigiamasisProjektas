@@ -22,12 +22,6 @@
                                 <label class="col-form-label" for="description">Category description:</label>
                                 <input type="text" name="description"  class="form-control">
                             </div>
-
-                            <div class="form-row">
-                                <label class="col-form-label" for="img">Category img:</label>
-                                <input type="text" name="img" class="form-control">
-
-                            </div>
                             <div class="form-group">
                                 <label for="select"> Category parrent: </label>
                                 <select multiple class="form-control" id="select" name="parent_id">

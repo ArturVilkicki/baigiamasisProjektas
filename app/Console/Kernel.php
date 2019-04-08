@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        'App\Console\Commands\remindersSend',
     ];
 
     /**
@@ -26,6 +27,17 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->command('reminders:send')->everyMinute(); 
+        
+
+        /*$schedule->call(
+            function(){
+                //funkcija kokia norime periodiskai ivykdyti
+            }
+        )->daily();*/
+        /*$schedule->execute(
+            //galime ir executinti
+        );*/
     }
 
     /**

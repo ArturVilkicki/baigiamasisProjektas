@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-md-offset-2">
-            <form action="{{route('categories.update', '$id')}}" method="POST">
+            <form action="{{route('categories.update', $id)}}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" class="form-control" value="PATCH">
                         

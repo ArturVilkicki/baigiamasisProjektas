@@ -18,12 +18,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/*Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RolesController');
+    Route::resource('users','UsersController');
+    Route::resource('products','ProductController');
+});*/
 Route::resources([
 	'admin/products' => 'ProductController',
 	'admin/categories' => 'CategoriesController',
 	'admin/shops' => 'ShopController',
 	'admin/permissions' => 'PermissionsController',
-	'admin/roles' => 'RolesController'
+	'admin/roles' => 'RolesController',
+	'admin/users' => 'UserController'
 ]);
 Route::post('fileUpload', [
 	'as' => 'categories.store',

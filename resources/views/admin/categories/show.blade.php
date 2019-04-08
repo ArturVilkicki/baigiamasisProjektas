@@ -8,7 +8,7 @@
             @foreach($category->getProducts as $product)
             
            
-            {{$product->getProduct->name}} {{$product->getProduct->description}} {{$product->getProduct->slug}}
+            {{$product->getProduct->name}}
             @endforeach
             <!-- {{$category->name}} {{$category->slug}} {{$category->description}} -->
             
