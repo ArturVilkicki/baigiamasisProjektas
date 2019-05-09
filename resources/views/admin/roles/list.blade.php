@@ -6,7 +6,8 @@
         <div class="col-md-12 col-md-offset-2">
             @foreach($roles as $role)
                 {{$role->name}}
-                <a class="btn btn-danger" href='{{ route('roles.create') }}'>Sukurti</a></br> 
+                <a class="btn btn-danger" href='{{ route('roles.create') }}'>Sukurti</a></br>
+                 
             @endforeach
         </div>
     </div>

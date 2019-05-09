@@ -47,6 +47,20 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->slug = $request->slug;
         $product->description = $request->description;
+        
+        if(file_exists($_FILES['image2']['tmp_name'])){
+              $this->validate($request,[
+                'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            $imageName = time().'.'.$request->image2->getClientOriginalExtension();  
+            $imagePath = 'images/';
+            $request->image2->move($imagePath,$imageName);
+
+            $image = $imagePath.$imageName;
+            $product->image = $image;
+        }
+        
         $product->save();
 
         $categoriesIds = $request->select;

@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
+Route::get('/', 'ShowProducts@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -30,7 +31,8 @@ Route::resources([
 	'admin/shops' => 'ShopController',
 	'admin/permissions' => 'PermissionsController',
 	'admin/roles' => 'RolesController',
-	'admin/users' => 'UserController'
+	'admin/users' => 'UserController',
+	'car' => 'CarsController'
 ]);
 Route::post('fileUpload', [
 	'as' => 'categories.store',

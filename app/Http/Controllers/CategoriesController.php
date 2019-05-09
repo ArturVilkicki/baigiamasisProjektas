@@ -40,7 +40,7 @@ class CategoriesController extends Controller
 
         $category = new Category();
 
-      
+        
         if(file_exists($_FILES['img']['tmp_name'])){
               $this->validate($request,[
                 'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',

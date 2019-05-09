@@ -12,9 +12,6 @@
                       <th scope="col">Slug</th>
                       <th scope="col">Description</th>
                       <th scope="col">Image</th>
-                      <th scope="col">Create</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,19 +31,6 @@
                     </td>
                     <td>
                         <img src="{{ asset($product->image) }}" />
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" href='{{ route('products.create') }}'>Sukurti</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" href='{{ route('products.edit', $product->id) }}'>Edit</a>
-                    </td>
-                    <td>
-                        <form method="POST" class="delete_form" action="{{route('products.destroy', $product->id)}}">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger">DELETE</button>
-                        </form>
                     </td>
                 </tr>
                 @endforeach
